@@ -28,9 +28,9 @@ function getColor(depth) {
 
 // Define a function for popups
 function onEachFeature(feature, layer) {
-    layer.bindPopup( "[Longitude,Latitude] : [" + feature.geometry.coordinates[0]+","+feature.geometry.coordinates[1]+"]"
-    + "<br>Depth: " + feature.geometry.coordinates[2] + " km" 
-    + "<br> Magnitude: " + feature.properties.mag);
+    layer.bindPopup( "<b>[ Lon , Lat ] : [ " + feature.geometry.coordinates[0]+" , "+feature.geometry.coordinates[1]+" ]</b>"
+    + "<br><b>Depth: " + feature.geometry.coordinates[2] + " km</b>" 
+    + "<br> <b>Magnitude: " + feature.properties.mag+ "</b>");
 }
 
 // Load the GeoJSON data and add it to the map
@@ -54,7 +54,6 @@ legend.onAdd = function (map) {
     var depths = [0, 10, 30, 50];
     var labels = [];
 
-    div.style.backgroundColor = 'white';
     // Add the legend title
     div.innerHTML = '<h4>Depth (km)</h4>';
 
@@ -66,8 +65,8 @@ legend.onAdd = function (map) {
 
         // Create a colored box and label for each interval
         labels.push(
-            '<i style="background-color:' + color + '"></i> ' +
-            from + (to ? '&ndash;' + to : '+') + ' km');
+            '<i style="background-color:' + color + '">' +
+            from + (to ? '&ndash;' + to : '+') + ' km'+"</i>");
     }
 
     div.innerHTML += labels.join('<br>'); // Combine legend items with line breaks
